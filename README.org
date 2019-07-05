@@ -1,7 +1,9 @@
 #+TITLE: Java One Click Run
-A package that compiles and runs Java programs easily within Emacs.
+A package that compiles and runs Java programs with one command within Emacs.
 * Introduction
-  This is the first Emacs package I've (partialy) written. It is a simple package originated from James Borden's [[https://github.com/jborden/emacs/blob/master/java/javac.el][javac-mode]] back in 2012. There are lots of simplifications and modifications that aims to enhance the original functionality. It is now capable of compiling and running Java programs using a single command in a shell buffer by utilizing the package [[https://github.com/ieure/shell-here][shell-here]].
+  This is the first Emacs package I've (partialy) written. It is a simple package originated from James Borden's [[https://github.com/jborden/emacs/blob/master/java/javac.el][javac-mode]] back in 2012. There are lots of simplifications and modifications that aims to enhance the original functionality. 
+  
+  It is now capable of compiling and running Java programs using one single command =javac-compile-and-run=. The behavior is similar to Eclipse and Intellij, which opens a shell buffer utilizing the package [[https://github.com/ieure/shell-here][shell-here]].
 * Installation
   1. Clone or download this repository.
   2. Install [[https://github.com/ieure/shell-here][shell-here]].
