@@ -1,15 +1,15 @@
-;;; java-one-click-run.el --- -*- lexical-binding: t -*-
+;;; java-one-click-run.el --- Compile and run Java programs easily within Emacs -*- lexical-binding: t -*-
 ;;
 ;; Copyright (c) 2019 Mingde (Matthew) Zeng
 ;;
 ;; Filename: java-one-click-run.el
-;; Description: A package that compiles and runs Java programs with one command within Emacs.
+;; Description: This package compiles and runs the current .java file using the function `java-one-click-run'.
 ;; Author: James Borden, Mingde (Matthew) Zeng
 ;; Maintainer: Mingde (Matthew) Zeng
 ;; Created: Wed Jul  3 17:13:00 2019 (-0400)
-;; Version: 0.0.2
-;; Package-Requires: (shell-here)
-;; Last-Updated: Fri Jul  5 09:25:47 2019 (-0400)
+;; Version: 0.0.3
+;; Package-Requires: ((emacs "26.1") (shell-here "1.3"))
+;; Last-Updated: Fri Jul  5 10:54:10 2019 (-0400)
 ;;           By: Mingde (Matthew) Zeng
 ;; URL: https://github.com/MatthewZMD/java-one-click-run
 ;; Keywords: java-one-click-run
@@ -19,13 +19,10 @@
 ;;
 ;;; Commentary:
 ;;
-;; This package compiles and runs the current .java file using the function `java-one-click-run'.
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
 ;; java-one-click-run originated from James Borden's javac-mode (https://github.com/jborden/emacs/blob/master/java/javac.el)
 ;; that was released under MIT license.
 ;;
+;; -------------------------------------------------------------
 ;; Copyright (c) 2019 James Borden
 ;;
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,18 +34,10 @@
 ;;
 ;; The above copyright notice and this permission notice shall be included in all
 ;; copies or substantial portions of the Software.
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Change Log:
-;;
-;; 2019.07.04
-;; - First release
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; -------------------------------------------------------------
 ;;
 ;; There're number of modifications and enhancements to the original package,
-;; it's now relicensed as GPLv3.
+;; therefore this package is now *relicensed* as GPLv3:
 ;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -62,6 +51,17 @@
 ;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;; 2019.07.05
+;; - Better documentation
+;; - Code enhancements
+;;
+;; 2019.07.04
+;; - First release
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;

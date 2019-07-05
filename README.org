@@ -1,5 +1,5 @@
 #+TITLE: Java One Click Run
-A package that compiles and runs Java programs with one command within Emacs.
+Compile and run Java programs easily within Emacs.
 * Introduction
   This is the first Emacs package I've (partialy) written. It is a simple package originated from James Borden's [[https://github.com/jborden/emacs/blob/master/java/javac.el][javac-mode]] back in 2012. There are lots of simplifications and modifications that aims to enhance the original functionality.
 
