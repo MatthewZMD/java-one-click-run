@@ -1,6 +1,6 @@
 ;;; java-one-click-run.el --- -*- lexical-binding: t -*-
 ;;
-;; Copyright (c) 2019 James Borden, Mingde (Matthew) Zeng
+;; Copyright (c) 2019 Mingde (Matthew) Zeng
 ;;
 ;; Filename: java-one-click-run.el
 ;; Description:
@@ -8,18 +8,18 @@
 ;; Maintainer: Mingde (Matthew) Zeng
 ;; Created: Wed Jul  3 17:13:00 2019 (-0400)
 ;; Version: 0.0.1
-;; Package-Requires: shell-here
-;; Last-Updated: Thu Jul  4 21:57:25 2019 (-0400)
+;; Package-Requires: (shell-here)
+;; Last-Updated: Fri Jul  5 08:50:09 2019 (-0400)
 ;;           By: Mingde (Matthew) Zeng
-;; URL:
-;; Keywords:
-;; Compatibility:
+;; URL: https://github.com/MatthewZMD/java-one-click-run
+;; Keywords: java-one-click-run
+;; Compatibility: emacs-version >= 26
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; This package compiles and runs the current .java file using the function `javac-compile-and-run'.
+;; This package compiles and runs the current .java file using the function `java-one-click-run'.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -75,31 +75,28 @@
 ;;
 ;;; Code:
 
-(eval-when-compile
-  (require 'shell-here))
+(require 'shell-here)
 
-(defun javac-compile-class ()
+(defun java-one-click-run--compile ()
   "Compile a java file into a .class file."
-  (interactive)
-  (let ((javac-command (concat "javac -cp " default-directory " " buffer-file-name)))
+  (let ((javac-command (quote (concat "javac -cp " default-directory " " buffer-file-name))))
     (shell-command javac-command)))
 
-(defun javac-run-java ()
+(defun java-one-click-run--run ()
   "Run the the java file in the current project directory using `shell-here'."
-  (interactive)
   (let* ((class-name (substring buffer-file-name (string-match "[^\/]*\.java$" buffer-file-name) -5))
-         (javac-command (concat "java -cp " default-directory " " class-name)))
-    (progn (shell-here)
-           (comint-stop-subjob)
-           (erase-buffer)
-           (insert javac-command)
-           (comint-send-input))))
+         (javac-command (quote (concat "java -cp " default-directory " " class-name))))
+    (shell-here)
+    (comint-stop-subjob)
+    (erase-buffer)
+    (insert javac-command)
+    (comint-send-input)))
 
-(defun javac-compile-and-run ()
+(defun java-one-click-run ()
   "Compile, if successful, then run the current java file using `shell-here'."
   (interactive)
-  (when (= (javac-compile-class) 0)
-    (javac-run-java)))
+  (when (= (java-one-click-run--compile) 0)
+    (java-one-click-run--run)))
 
 (provide 'java-one-click-run)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
