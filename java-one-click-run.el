@@ -3,13 +3,13 @@
 ;; Copyright (c) 2019 Mingde (Matthew) Zeng
 ;;
 ;; Filename: java-one-click-run.el
-;; Description:
+;; Description: A package that compiles and runs Java programs with one command within Emacs.
 ;; Author: James Borden, Mingde (Matthew) Zeng
 ;; Maintainer: Mingde (Matthew) Zeng
 ;; Created: Wed Jul  3 17:13:00 2019 (-0400)
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Package-Requires: (shell-here)
-;; Last-Updated: Fri Jul  5 08:50:09 2019 (-0400)
+;; Last-Updated: Fri Jul  5 09:15:39 2019 (-0400)
 ;;           By: Mingde (Matthew) Zeng
 ;; URL: https://github.com/MatthewZMD/java-one-click-run
 ;; Keywords: java-one-click-run
@@ -37,14 +37,6 @@
 ;;
 ;; The above copyright notice and this permission notice shall be included in all
 ;; copies or substantial portions of the Software.
-;;
-;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-;; SOFTWARE.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -79,13 +71,13 @@
 
 (defun java-one-click-run--compile ()
   "Compile a java file into a .class file."
-  (let ((javac-command (quote (concat "javac -cp " default-directory " " buffer-file-name))))
+  (let ((javac-command (concat "javac -cp " default-directory " " buffer-file-name)))
     (shell-command javac-command)))
 
 (defun java-one-click-run--run ()
   "Run the the java file in the current project directory using `shell-here'."
   (let* ((class-name (substring buffer-file-name (string-match "[^\/]*\.java$" buffer-file-name) -5))
-         (javac-command (quote (concat "java -cp " default-directory " " class-name))))
+         (javac-command (concat "java -cp " default-directory " " class-name)))
     (shell-here)
     (comint-stop-subjob)
     (erase-buffer)
