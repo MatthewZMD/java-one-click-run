@@ -9,7 +9,7 @@
 ;; Created: Wed Jul  3 17:13:00 2019 (-0400)
 ;; Version: 0.0.2
 ;; Package-Requires: (shell-here)
-;; Last-Updated: Fri Jul  5 09:15:39 2019 (-0400)
+;; Last-Updated: Fri Jul  5 09:25:47 2019 (-0400)
 ;;           By: Mingde (Matthew) Zeng
 ;; URL: https://github.com/MatthewZMD/java-one-click-run
 ;; Keywords: java-one-click-run
@@ -71,13 +71,13 @@
 
 (defun java-one-click-run--compile ()
   "Compile a java file into a .class file."
-  (let ((javac-command (concat "javac -cp " default-directory " " buffer-file-name)))
+  (let ((javac-command (concat "javac -cp \"" default-directory "\" \"" buffer-file-name "\"")))
     (shell-command javac-command)))
 
 (defun java-one-click-run--run ()
   "Run the the java file in the current project directory using `shell-here'."
   (let* ((class-name (substring buffer-file-name (string-match "[^\/]*\.java$" buffer-file-name) -5))
-         (javac-command (concat "java -cp " default-directory " " class-name)))
+         (javac-command (concat "java -cp \"" default-directory "\" \"" class-name "\"")))
     (shell-here)
     (comint-stop-subjob)
     (erase-buffer)
